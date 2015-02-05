@@ -4,3 +4,9 @@
     src=bash_aliases
     dest=/home/vagrant/.bash_aliases
     owner=root mode=0644
+
+- name: Copy git configurations
+  template:
+    src=gitconfig
+    dest=/home/vagrant/.gitconfig
+    owner=root mode=0644

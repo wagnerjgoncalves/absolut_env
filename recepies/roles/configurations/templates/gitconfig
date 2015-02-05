@@ -1,0 +1,40 @@
+[user]
+  name = Wagner J Goncalves
+  email = wagnerjgoncalves@gmail.com
+[merge]
+  tool = opendiff
+[core]
+  editor = vim
+[branch]
+  autosetuprebase = always
+[branch  "master"]
+  rebase = true
+[pull]
+  default = current
+  rebase = true
+[color]
+  ui = true
+[color "status"]
+  added = green
+  changed = yellow
+  untracked = red
+[alias]
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  ds = diff --stagedi
+
+  # basic shortcuts
+  cp = cherry-pick
+  ci = commit
+  co = checkout
+  br = branch
+
+  # stash shortcuts
+  sl = stash list
+  sa = stash apply
+  ss = stash save
+[filter "media"]
+  required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[Procfile]
+  dev = /Users/wagner/.config/git/ignore
