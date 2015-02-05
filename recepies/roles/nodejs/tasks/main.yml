@@ -1,0 +1,13 @@
+---
+- apt_repository: >
+    repo='deb https://deb.nodesource.com/node precise main'
+    state=present
+
+- apt_key: url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+
+- name: installing package
+  apt: >
+    pkg=nodejs
+    force=yes
+    state=latest
+    update_cache=yes

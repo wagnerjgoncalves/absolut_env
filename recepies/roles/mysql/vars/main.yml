@@ -1,0 +1,7 @@
+mysql_root_password: napratica
+
+mysql_napratica_user: estudar
+mysql_napratica_password: estudar
+
+mysql_port: 3306
+mysql_max_allowed_packet: '128M'

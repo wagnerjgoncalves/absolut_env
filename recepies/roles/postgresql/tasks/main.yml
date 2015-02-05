@@ -1,0 +1,46 @@
+---
+- apt_repository: >
+    repo='deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main'
+    state=present
+
+- apt_key: url=https://www.postgresql.org/media/keys/ACCC4CF8.asc
+  sudo: yes
+
+- apt: "pkg={{item}} state=latest force=yes"
+  with_items:
+    - postgresql-{{version}}
+    - postgresql-contrib-{{version}}
+    - libpq-dev
+    - python-psycopg2
+
+- lineinfile: >
+    dest=/etc/postgresql/{{version}}/main/pg_hba.conf
+    line='host all all 192.168.1.0/24 md5'
+    state=present
+  sudo: yes
+
+- lineinfile: >
+    dest=/etc/postgresql/{{version}}/main/postgresql.conf
+    line="listen_addresses = '*'"
+    state=present
+  sudo: yes
+
+- command: >
+    psql template1 -c 'CREATE EXTENSION IF NOT EXISTS "{{item}}"'
+  sudo: yes
+  sudo_user: postgres
+  with_items:
+    - citext
+    - hstore
+    - unaccent
+
+- sudo: yes
+  sudo_user: postgres
+  postgresql_user: >
+    name={{database_user}}
+    password={{database_password}}
+    role_attr_flags=CREATEDB,SUPERUSER
+    state=present
+
+- name: restart postgresql
+  service: name=postgresql state=restarted

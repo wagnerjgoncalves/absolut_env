@@ -1,0 +1,15 @@
+---
+- name: MongoDB | Import the public key used by the package management system
+  sudo: yes
+  command: apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
+
+- name: Source List
+  shell: echo "deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen" | tee -a /etc/apt/sources.list.d/10gen.list
+
+- name: Reload local package database
+  sudo: yes
+  command: apt-get -y update
+
+- name: Install the MongoDB packages
+  sudo: yes
+  command: apt-get -y install mongodb-10gen

@@ -1,0 +1,6 @@
+ruby_version: 2.2.0
+
+database_user: wagner
+database_password: wagner
+
+locale: en_US.UTF-8

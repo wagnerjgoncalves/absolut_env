@@ -1,0 +1,33 @@
+# Setting for the new UTF-8 terminal support in Lion
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+# Reload Test Database Alias
+alias reload_test_db="RAILS_ENV=test bundle exec rake db:drop && RAILS_ENV=test bundle exec rake db:create && RAILS_ENV=test bundle exec rake db:migrate"
+
+GIT_PS1_SHOWDIRTYSTATE=true
+
+# Host, User, Path and Branch information on console
+PS1='\[\033[36m\][$(ruby -e "print RUBY_VERSION")] \[\033[36m\]@\h \[\033[32m\]\u\[\033[00m\]:\[\033[32m\]\W\[\033[31m\]$(__git_ps1)\[\033[00m\]\n$ '
+
+# Path and Branch informantin on cosole
+#PS1='\[\033[32m\]\W\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
+
+#PS1='\[\033[36m\][$(ruby -e "print RUBY_VERSION")] \[\033[32m\]\W\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
+
+export CLICOLOR=1
+#1 - directory
+#2 - symbolic link
+#3 - socket
+#4 - pipe
+#5 - executable
+#6 - block special
+#7 - character special
+#8 - executable with setuid bit set
+#9 - executable with setgid bit set
+#10 - directory writable to others, with sticky bit
+#11 - directory writable to others, without sticky bit
+
+#example:       fbfbfbfbfbfbfbfbfbfbfb - foreground (f) then background (b)
+#map:           1 2 3 4 5 6 7 8 9 10 11
+export LSCOLORS=ExGxFxdxCxDxDxhbadExEx

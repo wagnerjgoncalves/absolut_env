@@ -1,0 +1,37 @@
+---
+- name: update all packages to the latest version
+  apt: >
+    upgrade=dist
+    update_cache=yes
+    cache_valid_time=1
+
+- apt: "pkg={{item}} state=latest force=yes"
+  with_items:
+    - build-essential
+    - openssl
+    - autoconf
+    - automake
+    - bison
+    - libc6-dev
+    - libffi-dev
+    - libreadline6
+    - libreadline6-dev
+    - curl
+    - libsqlite3-dev
+    - libssl-dev
+    - libtool
+    - libxml2-dev
+    - libxslt-dev
+    - libyaml-dev
+    - ncurses-dev
+    - zlib1g
+    - zlib1g-dev
+    - git-core
+    - sqlite3
+    - vim
+
+- name: generating {{locale}} file
+  locale_gen: name={{locale}} state=present
+
+- name: setting locale to {{locale}}
+  command: /usr/sbin/update-locale LANG={{locale}} LC_ALL={{locale}}

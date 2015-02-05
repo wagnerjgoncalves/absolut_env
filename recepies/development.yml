@@ -1,0 +1,18 @@
+- hosts: all
+  user: vagrant
+  sudo: yes
+  vars_files:
+    - vars/main.yml
+  roles:
+    - common
+    - postgresql
+    - imagemagick
+    - nodejs
+    - chruby
+    - ruby-install
+    - phantomjs
+    - redis
+    - memcached
+    - mysql
+    - mongodb
+    - configurations
