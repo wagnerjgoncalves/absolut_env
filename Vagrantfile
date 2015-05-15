@@ -10,8 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder "/Users/wagnerjgoncalves/projects", "/projects", nfs: true
   config.vm.hostname = "absolut"
 
-  #config.vm.network :forwarded_port, guest: 80, host: 8080
-  #config.vm.network :forwarded_port, guest: 3000, host: 3000
+  config.vm.network :forwarded_port, guest: 3000, host: 3000
   config.vm.network :private_network, ip: "192.168.0.133"
 
   config.vm.define "absolut" do |absolut|
