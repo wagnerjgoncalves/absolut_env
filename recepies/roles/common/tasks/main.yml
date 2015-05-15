@@ -33,5 +33,8 @@
 - name: generating {{locale}} file
   locale_gen: name={{locale}} state=present
 
+- name: Speed up Ansible by purging landscape-common
+  apt: pkg=landscape-common state=absent purge=yes
+
 - name: setting locale to {{locale}}
   command: /usr/sbin/update-locale LANG={{locale}} LC_ALL={{locale}}
